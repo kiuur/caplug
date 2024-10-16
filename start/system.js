@@ -1,3 +1,12 @@
+/*
+
+#kiuu
+github : https://github.com/kiuur
+youtube : https://youtube.com/@kyuurzy
+rest api : https://shinoa.us.kg
+
+*/
+
 require('../setting/config');
 
 const fs = require('fs');
