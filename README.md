@@ -5,3 +5,11 @@ Hello friends, this is my first bot base, and the first time I made it, if you f
 
 <p align="center">
 <a href="https://github.com/kiuur"><img title="Author" src="https://img.shields.io/badge/AUTHOR-kiuur-green.svg?style=for-the-badge&logo=github"></a>
+
+## Thanks To
+
+- [`kiuur`](https://github.com/kiuur)
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
