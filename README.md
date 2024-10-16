@@ -9,6 +9,7 @@ Hello friends, this is my first bot base, and the first time I made it, if you f
 ## Thanks To
 
 - [`kiuur`](https://github.com/kiuur)
+- [`Hyuu`](https://github.com/hyuux)
 
 ## License
 
