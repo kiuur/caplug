@@ -10,6 +10,7 @@ Hello friends, this is my first bot base, and the first time I made it, if you f
 
 - [`kiuur`](https://github.com/kiuur)
 - [`Hyuu`](https://github.com/hyuux)
+- [`KiiCode`](https://github.com/mdzakidev)
 
 ## License
 
