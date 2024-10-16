@@ -1,18 +1,13 @@
-# 
-Hello friends, this is my first bot base, and the first time I made it, if you find an error, I apologize, because I'm just a beginner who wants to try something I've never made before ❣️
-
-<h1 align="center">CASE - CJS</h1>
-
-<p align="center">
-<a href="https://github.com/kiuur"><img title="Author" src="https://img.shields.io/badge/AUTHOR-kiuur-green.svg?style=for-the-badge&logo=github"></a>
-
+## First Project
+Hello friends, this is my first project, please understand if you find any errors, friends✨, don't forget to give stars and follow 🐈‍⬛
 ## Thank you to those who have helped me ✨
 
-- [`kiuur`](https://github.com/kiuur)
-- [`Hyuu`](https://github.com/hyuux)
-- [`KiiCode`](https://github.com/mdzakidev)
-- [`xyzencode`](https://github.com/xyzencode)
-- 
+- [`kiuur`](https://github.com/kiuur) Myself/Script Creator
+- [`Hyuu`](https://github.com/hyuux) Hyuu ( my friend )
+- [`KiiCode`](https://github.com/mdzakidev) KiiCode/Zaki ( my friend )
+- [`xyzencode`](https://github.com/xyzencode) Adriannn ( sengpuh 🥶 )
+- [`RullZy`](https://github.com/rlzyy) RullZy ( my friend )
+
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
