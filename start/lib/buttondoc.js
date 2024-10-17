@@ -163,7 +163,7 @@ class Buttons {
         return this;
     }
 
-async run(jid, ptz, quoted = {}) {
+async run(jid, client, quoted = {}) {
     const filePath = './lib/media/NDoc.jpg'; // 300 x 300 puqi
     
     if (!fs.existsSync(filePath)) {
@@ -182,7 +182,7 @@ async run(jid, ptz, quoted = {}) {
         fileName: 'tes',
         mimetype: 'image/jpeg', 
         jpegThumbnail: fileBuffer 
-    }, { upload: ptz.waUploadToServer });
+    }, { upload: client.waUploadToServer });
 
     const message = {
         body: proto.Message.InteractiveMessage.Body.create({ text: this._body }),
@@ -223,7 +223,7 @@ async run(jid, ptz, quoted = {}) {
                         forwardingScore: 999999,
                         isForwarded: true,
                         businessMessageForwardInfo: {
-                            businessOwnerJid: ptz.decodeJid(ptz.user.id)
+                            businessOwnerJid: client.decodeJid(client.user.id)
                         },
                         externalAdReply: {
                             showAdAttribution: true,
@@ -240,7 +240,7 @@ async run(jid, ptz, quoted = {}) {
         }
     }, { quoted });
 
-    await ptz.relayMessage(msg.key.remoteJid, msg.message, { messageId: msg.key.id });
+    await client.relayMessage(msg.key.remoteJid, msg.message, { messageId: msg.key.id });
     return msg;
 }
 }
