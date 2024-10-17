@@ -7,6 +7,7 @@ Hi guys, this is my first project, please forgive me if there are any mistakes, 
 - [`KiiCode`](https://github.com/mdzakidev) KiiCode/Zaki ( my friend )
 - [`xyzencode`](https://github.com/xyzencode) Adriannn ( sengpuh 🥶 )
 - [`RullZy`](https://github.com/rlzyy) RullZy ( my friend )
+- [`Michael`](https://github.com/michaeljerrr) Michaell ( my friend )
 
 without them this script is nothing, thank you to them 💫
 
