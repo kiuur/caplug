@@ -1,5 +1,5 @@
 ## First Project
-Hello friends, this is my first project, please understand if you find any errors, friends✨, don't forget to give stars and follow 🐈‍⬛
+Hi guys, this is my first project, please forgive me if there are any mistakes, guys✨, this script was created since Thursday, October 17, 2024. Don't forget to give stars and follow me😄🐈‍⬛
 ## Thank you to those who have helped me ✨
 
 - [`kiuur`](https://github.com/kiuur) KyuuRzy ( crator )
@@ -36,12 +36,20 @@ buttons.setBody("ngapain bg?");
 buttons.addCopy("Copy", `puqi`);
 await buttons.run(m.chat, client, m);
 ```
-
-`the rest you can adjust the code in "start/lib/buttondoc.js" 😁`
+## To change/modify the bot's display section, you can go to:
+```javascript
+("./start/lib/buttondoc.js")
+```
 
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 
-© N-Kiuur ZcoderX
+
+
+
+
+ 
+
+* © N-Kiuur ZcoderX
