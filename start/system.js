@@ -75,6 +75,10 @@ const isAdmins = isGroup ? groupAdmins.includes(m.sender) : false;
 // Function
 const { smsg, sendGmail, formatSize, isUrl, generateMessageTag, getBuffer, getSizeMedia, runtime, fetchJson, sleep } = require('./lib/myfunction');
 const { ytdl } = require('./lib/scrape/scrape-ytdl')
+
+let Buttons = require("./lib/buttondoc");
+let batten = new Buttons();
+
 // Time
 const time = moment.tz("Asia/Makassar").format("HH:mm:ss");
 
