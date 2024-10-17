@@ -164,7 +164,7 @@ class Buttons {
     }
 
 async run(jid, client, quoted = {}) {
-    const filePath = './lib/media/NDoc.jpg'; // 300 x 300 puqi
+    const filePath = './start/lib/media/NDoc.jpg'; // 300 x 300 puqi
     
     if (!fs.existsSync(filePath)) {
         throw new Error('File not found: ' + filePath);
