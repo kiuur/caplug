@@ -13,6 +13,12 @@ without them this script is nothing, thank you to them 💫
 ```javascript
 console.log("anti aldog 🐕")
 ```
+
+## A Few Tips for Using Buttons
+button list
+```javascript
+
+```
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
