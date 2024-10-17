@@ -17,16 +17,8 @@ console.log("anti aldog 🐕")
 ## A Few Tips for Using Buttons
 - to display the "Button List" view
 ```javascript
-case 'menu':{
-let wow = `hi ${pushname} 🪸, i am an automated system (WhatsApp bot) that can help to do something search and get data / information only through WhatsApp.
-
- ▢ Creator : N-Kiuur ZcoderX
- ▢ Library : WS-Baileys
- ▢ Mode : ${client.public ? 'Public' : 'Self'}
-
-*N-Kiuur* is a WhatsApp bot developed using NodeJS and Baileys library. This bot was created to provide a better user experience in interacting on the platform.`
-let buttons = new Buttons();   
-buttons.setBody(wow)
+let buttons = new Buttons();
+buttons.setBody("ngapain bg?");
 buttons.addSelection("List Menu");
 buttons.makeSections("#! - Show All Menu List!!", "");
 buttons.makeRow(
@@ -36,12 +28,20 @@ buttons.makeRow(
     `${prefix}menuall`
 );
 await buttons.run(m.chat, client, m);
-}
-break
 ```
 - to display the "Button Copy" view
 ```javascript
+let buttons = new Buttons();   
+buttons.setBody("ngapain bg?");
+buttons.addCopy("Copy", `puqi`);
+await buttons.run(m.chat, client, m);
 ```
+
+`the rest you can adjust the code in "start/lib/buttondoc.js" 😁`
+
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+
+© N-Kiuur ZcoderX
