@@ -76,9 +76,6 @@ const isAdmins = isGroup ? groupAdmins.includes(m.sender) : false;
 const { smsg, sendGmail, formatSize, isUrl, generateMessageTag, getBuffer, getSizeMedia, runtime, fetchJson, sleep } = require('./lib/myfunction');
 const { ytdl } = require('./lib/scrape/scrape-ytdl')
 
-let Buttons = require("./lib/buttondoc");
-let batten = new Buttons();
-
 // Time
 const time = moment.tz("Asia/Makassar").format("HH:mm:ss");
 
@@ -134,55 +131,7 @@ let wow = `hi ${pushname} 🪸, i am an automated system (WhatsApp bot) that can
  ▢ Mode : ${client.public ? 'Public' : 'Self'}
 
 *N-Kiuur* is a WhatsApp bot developed using NodeJS and Baileys library. This bot was created to provide a better user experience in interacting on the platform.`
-let buttons = new Buttons();   
-buttons.setBody(wow)
-buttons.addSelection("List Menu");
-buttons.makeSections("#! - Show All Menu List!!", "");
-buttons.makeRow(
-    "#! - Show All Menu",
-    "display all menu in the bot !!!",
-    "you can see all the features in this bot",
-    `${prefix}menuall`
-);
-buttons.makeSections("#! - Menu Selection", "");
-buttons.makeRow(
-    "#! - Menu AI",
-    "AI (Artificial Intelligence)",
-    "The abbreviation AI stands for Artificial Intelligence",
-    `${prefix}menuai`
-);
-buttons.makeRow(
-    "#! - Menu Download",
-    "Download Menu for bot",
-    "You can download some media From social media",
-    `${prefix}menudown`
-);
-buttons.makeRow(
-    "#! - Menu Owner",
-    "This menu is for owners only, you must have owner access first to use it.",
-    "Before using it, you must be aware first, are you the owner or not the owner?",
-    `${prefix}menuowner`
-);
-buttons.makeRow(
-    "#! - Menu Group",
-    "You Can Use This Feature in Group Chat",
-    "This feature is only used for groups and cannot be used in private chats.",
-    `${prefix}menugrup`
-);
-buttons.makeRow(
-    "#! - Menu Tools",
-    "This tool may be useful for you",
-    "These various tools may be of some use to you.",
-    `${prefix}menutools`
-);
-buttons.makeSections("Contact Creator", "");
-buttons.makeRow(
-    "#! - Contact Script Owner",
-    "Spam and Call Owner are prohibited!!!",
-    "later you will be blocked by my owner",
-    `${prefix}owner`
-);
-await buttons.run(m.chat, client, m);
+kiuu(wow)
 }
 break
 
