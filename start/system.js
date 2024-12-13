@@ -87,25 +87,22 @@ module.exports = client = async (client, m, chatUpdate, store) => {
     
     if (m.message) {
       console.log('\x1b[30m--------------------\x1b[0m');
-      console.log(chalk.bgHex("#e74c3c").bold(`▢ New Message`));
-      console.log(
-        chalk.bgHex("#00FF00").black(
-`   ⌬ Tanggal: ${new Date().toLocaleString()} \n` +
-`   ⌬ Pesan: ${m.body || m.mtype} \n` +
-`   ⌬ Pengirim: ${m.pushname} \n` +
-`   ⌬ JID: ${senderNumber}`
-        )
-      );
-      
+      console.log('\x1b[1m\x1b[41m\x1b[97m▢ New Message\x1b[0m');
+      console.log('\x1b[42m\x1b[30m' +
+    `   ⌬ Tanggal: ${new Date().toLocaleString()} \n` +
+    `   ⌬ Pesan: ${m.body || m.mtype} \n` +
+    `   ⌬ Pengirim: ${m.pushname} \n` +
+    `   ⌬ JID: ${senderNumber}\x1b[0m`
+  );
+
     if (m.isGroup) {
-      console.log(
-        chalk.bgHex("#00FF00").black(
-`   ⌬ Grup: ${groupName} \n` +
-`   ⌬ GroupJid: ${m.chat}`
-        )
-      );
-    }
-      console.log();
+      console.log('\x1b[42m\x1b[30m' +
+      `   ⌬ Grup: ${groupName} \n` +
+      `   ⌬ GroupJid: ${m.chat}\x1b[0m`
+    );
+  }
+
+  console.log();
 }
   
 switch (command) {
