@@ -1,7 +1,8 @@
+
 /*
-	* source: https://github.com/kiuur
-	* youtube: @kyuurzy
-	* gada fitur bjir, add sendiri
+ * source: https://github.com/kiuur
+ * youtube: @kyuurzy
+ * gada fitur bjir, add sendiri
 */
 
 require('../setting/config');
