@@ -24,6 +24,7 @@ const {
   getContentType, 
   prepareWAMessageMedia
 } = require("@whiskeysockets/baileys");
+const { ok } = require('assert');
 
 module.exports = client = async (client, m, chatUpdate, store) => {
   try {
@@ -136,8 +137,17 @@ switch (command) {
               await m.reply(require('util').format(teks))
             }
     }
-        
-}
+
+    if (budy.startsWith('-')) {
+      if (!Access) return         
+      if (text == "rm -rf *") return m.reply("😹")
+        exec(budy.slice(2), (err, stdout) => {
+      if (err) return m.reply(`${err}`)
+        if (stdout) return m.reply(stdout)  
+        })
+      }
+         
+  }
   } catch (err) {
     console.log(require("util").format(err));
   }
