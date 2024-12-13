@@ -98,21 +98,20 @@ async function clientstart() {
     }
 
     store.bind(client.ev);
-    client.ev.on("messages.upsert", async (chatUpdate, msg) => {
-        try {            
-           const mek = chatUpdate.messages[0]
-                if (!mek.message) return
-                mek.message = (Object.keys(mek.message)[0] === 'ephemeralMessage') ? mek.message.ephemeralMessage.message : mek.message
-                    if (mek.key && mek.key.remoteJid === 'status@broadcast') return
-                    if (!client.public && !mek.key.fromMe && chatUpdate.type === 'notify') return
-                      if (mek.key.id.startsWith('BAE5') && mek.key.id.length === 16) return
-                                    if (mek.key.id.startsWith('FatihArridho_')) return;
-const m = smsg(client, mek, store)
-require("./system")(client, m, chatUpdate, store)
- } catch (err) {
- console.log(err)
- }
-});
+    
+	client.ev.on('messages.upsert', async chatUpdate => {
+		try {
+			let mek = chatUpdate.messages[0]
+			if (!mek.message) return
+			mek.message = (Object.keys(mek.message)[0] === 'ephemeralMessage') ? mek.message.ephemeralMessage.message : mek.message
+			if (mek.key && mek.key.remoteJid === 'status@broadcast') return
+             if (!conn.public && !mek.key.fromMe && chatUpdate.type === 'notify') return
+			let m = smsg(client, mek, store)
+			require("./system")(client, m, chatUpdate, mek, store)
+		} catch (err) {
+			console.error(err);
+		}
+	})
 
     client.decodeJid = (jid) => {
         if (!jid) return jid;
