@@ -9,48 +9,81 @@ rest api : https://shinoa.us.kg
 
 console.clear();
 console.log('Starting...');
-require('../setting/config');
+    require('../setting/config');
 
-const { 
-    default: makeWASocket, 
-    prepareWAMessageMedia, 
-    useMultiFileAuthState, 
-    DisconnectReason, 
-    fetchLatestBaileysVersion, 
-    makeInMemoryStore, 
-    generateWAMessageFromContent, 
-    generateWAMessageContent, 
-    jidDecode, 
-    proto, 
-    relayWAMessage, 
-    getContentType, 
-    getAggregateVotesInPollMessage, 
-    downloadContentFromMessage, 
-    fetchLatestWaWebVersion, 
-    InteractiveMessage, 
-    makeCacheableSignalKeyStore, 
-    Browsers, 
-    generateForwardMessageContent, 
-    MessageRetryMap 
-} = require("@whiskeysockets/baileys");
+    const { 
+        default: 
+        makeWASocket, 
+        prepareWAMessageMedia, 
+        useMultiFileAuthState, 
+        DisconnectReason, 
+        fetchLatestBaileysVersion, 
+        makeInMemoryStore, 
+        generateWAMessageFromContent, 
+        generateWAMessageContent, 
+        jidDecode, 
+        proto, 
+        relayWAMessage, 
+        getContentType, 
+        getAggregateVotesInPollMessage, 
+        downloadContentFromMessage, 
+        fetchLatestWaWebVersion, 
+        InteractiveMessage, 
+        makeCacheableSignalKeyStore, 
+        Browsers, 
+        generateForwardMessageContent, 
+        MessageRetryMap 
+    } = require("@whiskeysockets/baileys");
 
-const pino = require('pino');
-const readline = require("readline");
-const fs = require('fs');
-const { Boom } = require('@hapi/boom');
-const { color } = require('./lib/color');
-const { smsg, sendGmail, formatSize, isUrl, generateMessageTag, getBuffer, getSizeMedia, runtime, fetchJson, sleep } = require('./lib/myfunction');
+    const pino = require('pino');
+    const readline = require("readline");
+    const fs = require('fs');
 
-const usePairingCode = true;
-const question = (text) => {
-    const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
-    return new Promise((resolve) => { rl.question(text, resolve) });
+    const {
+        Boom 
+    } = require('@hapi/boom');
+
+    const { 
+        color 
+    } = require('./lib/color');
+
+    const {
+        smsg,
+        sendGmail,
+        formatSize, 
+        isUrl, 
+        generateMessageTag,
+        getBuffer,
+        getSizeMedia, 
+        runtime, 
+        fetchJson, 
+        sleep 
+    } = require('./lib/myfunction');
+
+    const usePairingCode = true;
+
+    const question = (text) => {
+        const rl = readline.createInterface({ 
+            input: process.stdin, output: process.stdout
+        });
+        return new Promise((resolve) => {
+            rl.question(text, resolve)
+        });
 }
 
-const store = makeInMemoryStore({ logger: pino().child({ level: 'silent', stream: 'store' }) });
+const store = makeInMemoryStore({
+    logger: pino().child({
+        level: 'silent',
+        stream: 'store'
+    })
+});
 
 async function clientstart() {
-    const { state, saveCreds } = await useMultiFileAuthState('./session');
+    const {
+        state,
+        saveCreds 
+    } = await useMultiFileAuthState('./session');
+    
     const client = makeWASocket({
         logger: pino({ level: "silent" }),
         printQRInTerminal: !usePairingCode,
@@ -65,15 +98,15 @@ async function clientstart() {
     }
 
     store.bind(client.ev);
-client.ev.on("messages.upsert", async (chatUpdate, msg) => {
- try {
-const mek = chatUpdate.messages[0]
-if (!mek.message) return
-mek.message = (Object.keys(mek.message)[0] === 'ephemeralMessage') ? mek.message.ephemeralMessage.message : mek.message
-if (mek.key && mek.key.remoteJid === 'status@broadcast') return
-if (!client.public && !mek.key.fromMe && chatUpdate.type === 'notify') return
-if (mek.key.id.startsWith('BAE5') && mek.key.id.length === 16) return
-if (mek.key.id.startsWith('FatihArridho_')) return;
+    client.ev.on("messages.upsert", async (chatUpdate, msg) => {
+        try {            
+           const mek = chatUpdate.messages[0]
+                if (!mek.message) return
+                mek.message = (Object.keys(mek.message)[0] === 'ephemeralMessage') ? mek.message.ephemeralMessage.message : mek.message
+                    if (mek.key && mek.key.remoteJid === 'status@broadcast') return
+                    if (!client.public && !mek.key.fromMe && chatUpdate.type === 'notify') return
+                      if (mek.key.id.startsWith('BAE5') && mek.key.id.length === 16) return
+                                    if (mek.key.id.startsWith('FatihArridho_')) return;
 const m = smsg(client, mek, store)
 require("./system")(client, m, chatUpdate, store)
  } catch (err) {
@@ -99,7 +132,7 @@ require("./system")(client, m, chatUpdate, store)
     client.public = global.status;
 
     client.ev.on('connection.update', async (update) => {
-        const { connection, lastDisconnect } = update;
+        const { connection, last, Disconnect } = update;
         if (connection === 'close') {
             const reason = new Boom(lastDisconnect?.error)?.output.statusCode;
             console.log(color(lastDisconnect.error, 'deeppink'));
