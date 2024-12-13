@@ -98,20 +98,20 @@ async function clientstart() {
     }
 
     store.bind(client.ev);
-    
-	client.ev.on('messages.upsert', async chatUpdate => {
-		try {
-			let mek = chatUpdate.messages[0]
-			if (!mek.message) return
-			mek.message = (Object.keys(mek.message)[0] === 'ephemeralMessage') ? mek.message.ephemeralMessage.message : mek.message
-			if (mek.key && mek.key.remoteJid === 'status@broadcast') return
-             if (!conn.public && !mek.key.fromMe && chatUpdate.type === 'notify') return
-			let m = smsg(client, mek, store)
-			require("./system")(client, m, chatUpdate, mek, store)
-		} catch (err) {
-			console.error(err);
-		}
-	})
+   
+    client.ev.on('messages.upsert', async chatUpdate => {
+       try {
+	 let mek = chatUpdate.messages[0]
+         if (!mek.message) return
+	 mek.message = (Object.keys(mek.message)[0] === 'ephemeralMessage') ? mek.message.ephemeralMessage.message : mek.message
+	 if (mek.key && mek.key.remoteJid === 'status@broadcast') return
+         if (!client.public && !mek.key.fromMe && chatUpdate.type === 'notify') return
+	 let m = smsg(client, mek, store)
+	 require("./system")(client, m, chatUpdate, mek, store)
+       } catch (err) {
+	       console.error(err);		
+       }
+    })
 
     client.decodeJid = (jid) => {
         if (!jid) return jid;
@@ -166,16 +166,18 @@ async function clientstart() {
         }
     });
 
-    client.sendText = (jid, text, quoted = '', options) => client.sendMessage(jid, { text: text, ...options }, { quoted });
+    client.sendText = (jid, text, quoted = '', options) => {
+	    client.sendMessage(jid, { text: text, ...options }, { quoted });
+    }
     
     client.downloadMediaMessage = async (message) => {
-let mime = (message.msg || message).mimetype || ''
-let messageType = message.mtype ? message.mtype.replace(/Message/gi, '') : mime.split('/')[0]
-const stream = await downloadContentFromMessage(message, messageType)
-let buffer = Buffer.from([])
-for await(const chunk of stream) {
-buffer = Buffer.concat([buffer, chunk])}
-return buffer
+          let mime = (message.msg || message).mimetype || ''
+          let messageType = message.mtype ? message.mtype.replace(/Message/gi, '') : mime.split('/')[0]
+          const stream = await downloadContentFromMessage(message, messageType)
+          let buffer = Buffer.from([])
+            for await(const chunk of stream)
+		buffer = Buffer.concat([buffer, chunk])}
+	    return buffer
     } 
     
     client.ev.on('creds.update', saveCreds);
