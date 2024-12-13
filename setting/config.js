@@ -1,16 +1,10 @@
 const fs = require('fs')
 
-global.owner = "62" //owner number
-global.footer = "_N-Kiuur ZcoderX_" //footer section
-global.status = false //"self/public" section of the bot
+global.owner = "62"
+global.status = false
 
 global.mess = {
-ingroup: "It's not funny, this feature is only for groups💢",
-admin: "not funny, only group admins use this feature💢",
-owner: "Wow! You're not my owner🗣️",
-premium: "you are not a premium user",
-seller: "You don't have access as a seller yet",
-wait: "please just wait ngab"
+  owner: "khusus ongner bejir 😹"
 }
 
 let file = require.resolve(__filename)
