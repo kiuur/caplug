@@ -125,7 +125,7 @@ async function clientstart() {
     client.public = global.status;
 
     client.ev.on('connection.update', async (update) => {
-        const { connection, last, Disconnect } = update;
+        const { connection, lastDisconnect } = update;
         if (connection === 'close') {
             const reason = new Boom(lastDisconnect?.error)?.output.statusCode;
             console.log(lastDisconnect.error);
