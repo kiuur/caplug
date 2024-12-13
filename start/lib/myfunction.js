@@ -5,10 +5,7 @@
 */
 
 const { extractMessageContent, jidNormalizedUser, proto, delay, getContentType, areJidsSameUser, generateWAMessage } = require("@whiskeysockets/baileys")
-const chalk = require('chalk')
 const fs = require('fs')
-const Crypto = require('crypto')
-const axios = require('axios')
 const moment = require('moment-timezone')
 const { sizeFormatter } = require('human-readable')
 const util = require('util')
