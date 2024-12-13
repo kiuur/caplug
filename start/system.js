@@ -115,95 +115,55 @@ module.exports = client = async (client, m, chatUpdate, store) => {
     }
       console.log();
 }
-
-const reaction = async (jidss, emoji) => {
-client.sendMessage(jidss, { react: { text: emoji, key: m.key }})}
+    
+    const reaction = async (jidss, emoji) => {
+      client.sendMessage(jidss, { 
+        react: { text: emoji, key: m.key }
+      })
+    }
   
-// Command handler
 switch (command) {
+  
+  case 'tes':{
+    m.reply('tos')
+  }
+  break
 
-case 'menu':{
-let wow = `hi ${pushname} 🪸, i am an automated system (WhatsApp bot) that can help to do something search and get data / information only through WhatsApp.
-
- ▢ Creator : N-Kiuur ZcoderX
- ▢ Library : WS-Baileys
- ▢ Mode : ${client.public ? 'Public' : 'Self'}
-
-*N-Kiuur* is a WhatsApp bot developed using NodeJS and Baileys library. This bot was created to provide a better user experience in interacting on the platform.`
-kiuu(wow)
-}
-break
-
-case "play": {
-if (!text) return m.reply(`*Example:* ${prefix + command} photograph`)
-const yts = require('yt-search');
-let search = await yts(text);
-let telaso = search.all[0].url;
-var response = await ytdl(telaso)
-var puki = response.data.mp3
-client.sendMessage(m.chat, { audio: { url: puki },
-mimetype: "audio/mpeg",
-fileName: "kiuu.mp3",
-contextInfo: {
-forwardingScore: 100,
-isForwarded: true,
-externalAdReply: {
-showAdAttribution: true,
-title: search.all[0].title,
-sourceUrl: search.all[0].timestamp,
-thumbnailUrl: search.all[0].thumbnail,
-}}},{quoted:m})
-}
-break
+  default:
+    if (budy.startsWith('>')) {
+      if (!Access) return;
+      try {
+        let evaled = await eval(budy.slice(2));
+        if (typeof evaled !== 'string') evaled = require('util').inspect(evaled);
+        await m.reply(evaled);
+      } catch (err) {
+        m.reply(String(err));
+      }
+    }
         
-case 'tovn': {
-if (!/video/.test(mime) && !/audio/.test(mime)) return m.reply(`reply video/vn with caption ${prefix + command}`)
-if (!quoted) return m.reply(`reply video/vn with caption ${prefix + command}`)
-await reaction(m.chat, "🔒");
-await sleep(5000)
-let media = await quoted.download()
-let { toAudio } = require('./lib/converter')
-let audio = await toAudio(media, 'mp4')
-await reaction(m.chat, "🔓");
-client.sendMessage(m.chat, {audio, mimetype:'audio/mpeg', ptt: true}, { quoted : m })
-}
-break
-
-default:
-if (budy.startsWith('>')) {
-if (!Access) return;
-try {
-let evaled = await eval(budy.slice(2));
-if (typeof evaled !== 'string') evaled = require('util').inspect(evaled);
-await m.reply(evaled);
-} catch (err) {
-m.reply(String(err));
-}
-}
-        
-if (budy.startsWith('<')) {
-if (!Access) return
-let kode = budy.trim().split(/ +/)[0]
-let teks
-try {
-teks = await eval(`(async () => { ${kode == ">>" ? "return" : ""} ${q}})()`)
-} catch (e) {
-teks = e
-} finally {
-await m.reply(require('util').format(teks))
-}
-}
+    if (budy.startsWith('<')) {
+      if (!Access) return
+        let kode = budy.trim().split(/ +/)[0]
+          let teks
+            try {
+              teks = await eval(`(async () => { ${kode == ">>" ? "return" : ""} ${q}})()`)
+            } catch (e) {
+              teks = e
+            } finally {
+              await m.reply(require('util').format(teks))
+            }
+    }
         
 }
-} catch (err) {
-console.log(require("util").format(err));
-}
+  } catch (err) {
+    console.log(require("util").format(err));
+  }
 };
 
 let file = require.resolve(__filename);
 require('fs').watchFile(file, () => {
-require('fs').unwatchFile(file);
-console.log('\x1b[0;32m' + __filename + ' \x1b[1;32mupdated!\x1b[0m');
-delete require.cache[file];
-require(file);
+  require('fs').unwatchFile(file);
+  console.log('\x1b[0;32m' + __filename + ' \x1b[1;32mupdated!\x1b[0m');
+  delete require.cache[file];
+  require(file);
 });
