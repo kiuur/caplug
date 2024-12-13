@@ -43,10 +43,6 @@ console.log('Starting...');
         Boom 
     } = require('@hapi/boom');
 
-    const { 
-        color 
-    } = require('./lib/color');
-
     const {
         smsg,
         sendGmail,
@@ -109,7 +105,7 @@ async function clientstart() {
 	 let m = smsg(client, mek, store)
 	 require("./system")(client, m, chatUpdate, mek, store)
        } catch (err) {
-	       console.error(err);		
+	 console.error(err);		
        }
     })
 
@@ -134,35 +130,35 @@ async function clientstart() {
         const { connection, last, Disconnect } = update;
         if (connection === 'close') {
             const reason = new Boom(lastDisconnect?.error)?.output.statusCode;
-            console.log(color(lastDisconnect.error, 'deeppink'));
+            console.log(lastDisconnect.error);
             if (lastDisconnect.error == 'Error: Stream Errored (unknown)') {
                 process.exit();
             } else if (reason === DisconnectReason.badSession) {
-                console.log(color(`Bad Session File, Please Delete Session and Scan Again`));
+                console.log(`Bad Session File, Please Delete Session and Scan Again`);
                 process.exit();
             } else if (reason === DisconnectReason.connectionClosed) {
-                console.log(color('[SYSTEM]', 'white'), color('Connection closed, reconnecting...', 'deeppink'));
+                console.log('Connection closed, reconnecting...');
                 process.exit();
             } else if (reason === DisconnectReason.connectionLost) {
-                console.log(color('[SYSTEM]', 'white'), color('Connection lost, trying to reconnect', 'deeppink'));
+                console.log('Connection lost, trying to reconnect');
                 process.exit();
             } else if (reason === DisconnectReason.connectionReplaced) {
-                console.log(color('Connection Replaced, Another New Session Opened, Please Close Current Session First'));
+                console.log('Connection Replaced, Another New Session Opened, Please Close Current Session First');
                 client.logout();
             } else if (reason === DisconnectReason.loggedOut) {
-                console.log(color(`Device Logged Out, Please Scan Again And Run.`));
+                console.log(`Device Logged Out, Please Scan Again And Run.`);
                 client.logout();
             } else if (reason === DisconnectReason.restartRequired) {
-                console.log(color('Restart Required, Restarting...'));
+                console.log('Restart Required, Restarting...');
                 await clientstart();
             } else if (reason === DisconnectReason.timedOut) {
-                console.log(color('Connection TimedOut, Reconnecting...'));
+                console.log('Connection TimedOut, Reconnecting...');
                 clientstart();
             }
         } else if (connection === "connecting") {
-            console.log(color('Menghubungkan . . . '));
+            console.log('Menghubungkan . . . ');
         } else if (connection === "open") {
-            console.log(color('Bot Berhasil Tersambung'));
+            console.log('Bot Berhasil Tersambung');
         }
     });
 
