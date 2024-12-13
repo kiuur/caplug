@@ -1,16 +1,11 @@
 /*
-
-#kiuu
-github : https://github.com/kiuur
-youtube : https://youtube.com/@kyuurzy
-rest api : https://shinoa.us.kg
-
+	* source: https://github.com/kiuur
+	* youtube: @kyuurzy
+	* gada fitur bjir, add sendiri
 */
 
 require('../setting/config');
 const fs = require('fs');
-const axios = require('axios');
-const chalk = require("chalk");
 const util = require("util");
 const moment = require("moment-timezone");
 const {
@@ -86,10 +81,6 @@ module.exports = client = async (client, m, chatUpdate, store) => {
       fetchJson,
       sleep 
     } = require('./lib/myfunction');
-    
-    const {
-      ytdl
-    } = require('./lib/scrape/scrape-ytdl')
 
     const time = moment.tz("Asia/Makassar").format("HH:mm:ss");
     
@@ -115,12 +106,6 @@ module.exports = client = async (client, m, chatUpdate, store) => {
     }
       console.log();
 }
-    
-    const reaction = async (jidss, emoji) => {
-      client.sendMessage(jidss, { 
-        react: { text: emoji, key: m.key }
-      })
-    }
   
 switch (command) {
   
