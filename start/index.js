@@ -1,10 +1,8 @@
+
 /*
-
-#kiuu
-github : https://github.com/kiuur
-youtube : https://youtube.com/@kyuurzy
-rest api : https://shinoa.us.kg
-
+ * source: https://github.com/kiuur
+ * youtube: @kyuurzy
+ * gada fitur bjir, add sendiri
 */
 
 console.clear();
