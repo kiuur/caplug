@@ -58,11 +58,7 @@ const store = makeInMemoryStore({
 });
 
 async function clientstart() {
-    const {
-        state,
-        saveCreds 
-    } = await useMultiFileAuthState('./session');
-    
+    const { state, saveCreds } = await useMultiFileAuthState('./session');
     const client = makeWASocket({
         logger: pino({ level: "silent" }),
         printQRInTerminal: !usePairingCode,
