@@ -8,6 +8,7 @@
 require('../setting/config');
 const fs = require('fs');
 const util = require("util");
+const path = require("path")
 const moment = require("moment-timezone");
 const {
   spawn,
@@ -104,7 +105,48 @@ module.exports = client = async (client, m, chatUpdate, store) => {
 
   console.log();
 }
-  
+
+const pluginsLoader = async (directory) => {
+    let plugins = []
+    const folders = fs.readdirSync(directory)
+    folders.forEach(file => {
+        const filePath = path.join(directory, file)
+        if (filePath.endsWith(".js")) {
+            try {
+                const resolvedPath = require.resolve(filePath);
+                if (require.cache[resolvedPath]) {
+                    delete require.cache[resolvedPath]
+                }
+                const plugin = require(filePath)
+                plugins.push(plugin)
+            } catch (error) {
+                console.log(`${filePath}:`, error)
+            }
+        }
+    })
+    return plugins
+}
+
+let pluginsDisable = true
+const plugins = await pluginsLoader(path.resolve(__dirname, "../plugins"))
+const plug = { 
+    client,
+    Access,
+    command,
+    isCmd,
+    text,
+    botNumber 
+}
+for (let plugin of plugins) {
+    if (plugin.command.find(e => e == command.toLowerCase())) {
+        pluginsDisable = false
+        if (typeof plugin !== "function") return
+        await plugin(m, plug)
+    }
+}
+      if (!pluginsDisable) return
+      
+      
 switch (command) {
   
   case 'menu':{
