@@ -4,7 +4,7 @@ global.owner = "62"
 global.status = false
 
 global.mess = {
-  owner: "khusus ongner bejir 😹"
+  owner: "khusus ongner bejir"
 }
 
 let file = require.resolve(__filename)
