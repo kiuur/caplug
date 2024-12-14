@@ -29,7 +29,6 @@ const {
 
 const {
     smsg,
-    sendGmail,
     formatSize, 
     isUrl, 
     generateMessageTag,
