@@ -5,7 +5,10 @@ hi guys, this is my second project, please forgive me if you find any errors in 
 
 ## Thank you to those who have helped me
 
-- [`kiuur`](https://github.com/kiuur) kiuur ( creator )
+[`kiuur`](https://github.com/kiuur) kiuur ( creator )
+
+## script supports responses in WhatsApp channels 
+This script already supports responses on WhatsApp channels, because it uses Baileys which supports channels, namely [`nstar-y baileys`](https://github.com/nstar-y/Bail)
 
 ## License
 
