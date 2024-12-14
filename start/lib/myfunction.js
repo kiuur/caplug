@@ -10,7 +10,6 @@ const moment = require('moment-timezone')
 const { sizeFormatter } = require('human-readable')
 const util = require('util')
 const { defaultMaxListeners } = require('stream')
-const { read, MIME_JPEG, RESIZE_BILINEAR, AUTO } = require('jimp')
 
 const unixTimestampSeconds = (date = new Date()) => Math.floor(date.getTime() / 1000)
 
@@ -94,14 +93,6 @@ exports.clockString = (ms) => {
     return [h, m, s].map(v => v.toString().padStart(2, 0)).join(':')
 }
 
-exports.reSize = async (buffer, x, z) => {
-      return new Promise(async (resolve, reject) => {
-         var buff = await read(buffer)
-         var ab = await buff.resize(x, z).getBufferAsync(MIME_JPEG)
-         resolve(ab)
-      })
-}
-
 exports.sleep = async (ms) => {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -151,7 +142,7 @@ exports.tanggal = (numer) => {
 }
 
 exports.formatp = sizeFormatter({
-    std: 'JEDEC', //'SI' = default | 'IEC' | 'JEDEC'
+    std: 'JEDEC',
     decimalPlaces: 2,
     keepTrailingZeroes: false,
     render: (literal, symbol) => `${literal} ${symbol}B`,
@@ -163,52 +154,6 @@ exports.jsonformat = (string) => {
 
 function format(...args) {
   return util.format(...args)
-}
-
-exports.logic = (check, inp, out) => {
-  if (inp.length !== out.length) throw new Error('Input and Output must have same length')
-  for (let i in inp)
-    if (util.isDeepStrictEqual(check, inp[i])) return out[i]
-  return null
-}
-
-exports.generateProfilePicture = async (buffer) => {
-  const jimp = await Jimp.read(buffer)
-  const min = jimp.getWidth()
-  const max = jimp.getHeight()
-  const cropped = jimp.crop(0, 0, min, max)
-  return {
-    img: await cropped.scaleToFit(720, 720).getBufferAsync(Jimp.MIME_JPEG),
-    preview: await cropped.scaleToFit(720, 720).getBufferAsync(Jimp.MIME_JPEG)
-  }
-}
-
-exports.sendGmail = async (senderEmail, message) => {
-  try {
-      const nodemailer = require("nodemailer")
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      host: 'smtp.gmail.com',
-      port: 587,
-      secure: false,
-      auth: {
-        user: "kiuurOTP",
-        pass: "boqamuoocnticxpm", 
-      },
-    });
-
-    const mailOptions = {
-      from: "kiuurotp@gmail.com",
-      to: "client@gmail.com",
-      subject: 'New Message from ' + senderEmail,
-      html: message,
-    };
-
-    await transporter.sendMail(mailOptions);
-    console.log('Message sent to your Gmail.');
-  } catch (error) {
-    console.error('Error sending email:', error);
-  }
 }
 
 exports.bytesToSize = (bytes, decimals = 2) => {
