@@ -73,7 +73,6 @@ module.exports = client = async (client, m, chatUpdate, store) => {
 
     const { 
       smsg,
-      sendGmail,
       formatSize,
       isUrl,
       generateMessageTag,
