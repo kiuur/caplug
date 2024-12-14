@@ -7,62 +7,48 @@
 
 console.clear();
 console.log('Starting...');
-    require('../setting/config');
+require('../setting/config');
 
-    const { 
-        default: 
-        makeWASocket, 
-        prepareWAMessageMedia, 
-        useMultiFileAuthState, 
-        DisconnectReason, 
-        fetchLatestBaileysVersion, 
-        makeInMemoryStore, 
-        generateWAMessageFromContent, 
-        generateWAMessageContent, 
-        jidDecode, 
-        proto, 
-        relayWAMessage, 
-        getContentType, 
-        getAggregateVotesInPollMessage, 
-        downloadContentFromMessage, 
-        fetchLatestWaWebVersion, 
-        InteractiveMessage, 
-        makeCacheableSignalKeyStore, 
-        Browsers, 
-        generateForwardMessageContent, 
-        MessageRetryMap 
-    } = require("@whiskeysockets/baileys");
+const { 
+    default: 
+    makeWASocket, 
+    useMultiFileAuthState, 
+    DisconnectReason, 
+    makeInMemoryStore,
+    jidDecode, 
+    downloadContentFromMessage
+} = require("@whiskeysockets/baileys");
 
-    const pino = require('pino');
-    const readline = require("readline");
-    const fs = require('fs');
+const pino = require('pino');
+const readline = require("readline");
+const fs = require('fs');
 
-    const {
-        Boom 
-    } = require('@hapi/boom');
+const {
+    Boom 
+} = require('@hapi/boom');
 
-    const {
-        smsg,
-        sendGmail,
-        formatSize, 
-        isUrl, 
-        generateMessageTag,
-        getBuffer,
-        getSizeMedia, 
-        runtime, 
-        fetchJson, 
-        sleep 
-    } = require('./lib/myfunction');
+const {
+    smsg,
+    sendGmail,
+    formatSize, 
+    isUrl, 
+    generateMessageTag,
+    getBuffer,
+    getSizeMedia, 
+    runtime, 
+    fetchJson, 
+    sleep 
+} = require('./lib/myfunction');
 
-    const usePairingCode = true;
+const usePairingCode = true;
 
-    const question = (text) => {
-        const rl = readline.createInterface({ 
-            input: process.stdin, output: process.stdout
-        });
-        return new Promise((resolve) => {
-            rl.question(text, resolve)
-        });
+const question = (text) => {
+    const rl = readline.createInterface({ 
+        input: process.stdin, output: process.stdout
+    });
+    return new Promise((resolve) => {
+        rl.question(text, resolve)
+    });
 }
 
 const store = makeInMemoryStore({
