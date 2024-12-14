@@ -7,8 +7,8 @@ hi guys, this is my second project, please forgive me if you find any errors in 
 
 [`kiuur`](https://github.com/kiuur) kiuur ( creator )
 
-## does this script support response on channel? and what are the pros and cons?
-This script already supports responses on WhatsApp channels, because it uses Baileys which supports channels, namely [`nstar-y baileys`](https://github.com/nstar-y/Bail), but there is a minus in this script, namely the long time to install the module. but the script will run 100%
+## does this script support response on channel? 
+This script already supports responses on WhatsApp channels, because it uses Baileys which supports channels, namely [`nstar-y baileys`](https://github.com/nstar-y/Bail), but there is a drawback to this script, namely the time needed to install the module is quite long. however, this script still runs.
 
 
 ## License
