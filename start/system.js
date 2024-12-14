@@ -1,5 +1,5 @@
 
-/* 
+/*
  * source: https://github.com/kiuur
  * youtube: @kyuurzy
  * gada fitur bjir, add sendiri
@@ -107,8 +107,8 @@ module.exports = client = async (client, m, chatUpdate, store) => {
   
 switch (command) {
   
-  case 'tes':{
-    m.reply('tos')
+  case 'menu':{
+    m.reply("\n")
   }
   break
 
